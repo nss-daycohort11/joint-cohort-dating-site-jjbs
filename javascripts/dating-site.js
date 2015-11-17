@@ -36,8 +36,12 @@ require(
         $("#signed_in_user_profile_panel").css("display", "none");
         $("#main_output").fadeIn("slow");
       });
+// Show Edit Panel
+      $("#edit_nav").click(function(){
+        $("#main_output").fadeOut();
+         $("#signed_in_user_profile_panel").css("display", "none");
 
-
+    });
 
 
 
