@@ -15,7 +15,7 @@ require.config({
 
 require(
   ["jquery", "logged-in-functionality"], 
-  function($, loggedInFunctionality, filter_mates, Q, proClick, varsPassed, snippetGeneration) {
+  function($, loggedInFunctionality) {
 
     loggedInFunctionality();
 
