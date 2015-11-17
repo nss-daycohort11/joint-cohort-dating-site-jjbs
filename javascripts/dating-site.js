@@ -34,6 +34,21 @@ require(
       }
     });
   });
+ 
+  $(document).ready(function() {
+    $('#pic').hide();
+    $('#login').hover(function() {
+      $('#pic').show();
+    },function() {
+      $('#pic').hide();
+    });
+  });
+
+  var image = authData.facebook.profileImageURL;
+  console.log("image", image);
+
+  $("#img").attr(image);
+
 
     /*
       You can choose to use the REST methods to interact with
