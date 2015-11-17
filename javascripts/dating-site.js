@@ -35,6 +35,15 @@ require(
     });
   });
 
+  $(document).ready(function() {
+    $('#pic').hide();
+    $('#login').hover(function() {
+      $('#pic').show();
+    },function() {
+      $('#pic').hide();
+    });
+  });
+
     /*
       You can choose to use the REST methods to interact with
       Firebase, or you can use the Firebase API with event
