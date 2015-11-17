@@ -22,8 +22,8 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-	        <li><a href="#">Profile</a></li>
+	        <li id="home_nav"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+	        <li id="pro_nav"><a href="#">Profile</a></li>
 	      </ul>
 	      <form class="navbar-form navbar-left" role="search">
 	      </form>
@@ -47,53 +47,37 @@
 		    </div><!-- /input-group -->
 		    <div class="input-group filter-item">
 		      <span class="input-group-addon">
-		        <input type="radio" name="power-type"  aria-label="...">
+		        <input type="radio" name="power-type" value="ice" aria-label="...">
 		      </span>
-		      <span class="form-control" value="ice" aria-label="..."> Ice </span>
+		      <span class="form-control" aria-label="..."> Ice </span>
 		    </div><!-- /input-group -->
 		    <div class="input-group filter-item">
 		      <span class="input-group-addon">
-		        <input type="radio" name="power-type" aria-label="...">
+		        <input type="radio" name="power-type" value="some power" aria-label="...">
 		      </span>
-		      <span class="form-control" value="anotherPower" aria-label="..."> Another Power Here </span>
+		      <span class="form-control" aria-label="..."> Another Power Here </span>
 		    </div><!-- /input-group -->
-			<button type="button" class="btn btn-primary btn-lg btn-block filter-btn">Filter Here</button>
+			<button type="button" disabled="true" id="filter_btn" class="btn btn-primary btn-lg btn-block filter-btn">Filter Here</button>
 
 	  	</div><!-- end filter-panel -->
 
 
 	  	<div id="user-output" class="col-md-8">
 
-	  			<div class="jumbotron user_snippet">
-	  				<img src="#" class="prof_thumbnail">
-	  				<div class="snippet_text">
-						<p> Name:</p>
-						<p> Gender:</p>
-						<p> Superpower:</p>
-	  				</div>
-	  			</div><!-- end user snippet-->
-
-	  			<div class="jumbotron user_snippet">
-	  				<img src="#" class="prof_thumbnail">
-	  				<div class="snippet_text">
-						<p> Name:</p>
-						<p> Gender:</p>
-						<p> Superpower:</p>
-	  				</div>
-	  			</div><!-- end user snippet-->
-
-	  			<div class="jumbotron user_snippet">
-	  				<img src="#" class="prof_thumbnail">
-	  				<div class="snippet_text">
-						<p><span> Name:</span></p>
-						<p><span> Gender:</span></p>
-						<p><span> Superpower:</span></p>
-	  				</div>
-	  			</div><!-- end user snippet-->
+			<h1> Destiny is Waiting...</h1>
 
 	  	</div><!-- end user-output-->
+
+
 	  </div>
 	</div>
 
+	<div id="user_profile_panel" class="jumbotron container-fluid">
+	</div><!-- user profile panel -->
+
+	<div id="signed_in_user_profile_panel" class="jumbotron container-fluid">
+	</div><!-- user profile panel -->
+
+	<script data-main="javascripts/dating-site" src="lib/bower_components/requirejs/require.js"></script>
 </body>
 </html>
