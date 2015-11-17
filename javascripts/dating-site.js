@@ -20,6 +20,7 @@ require(
     //Show signed-in profile OR dashboard
       $("#pro_nav").click(function(){
         $("#main_output").css("display", "none");
+        $("#edit_panel").css("display", "none");
 
          require(["hbs!../templates/signed_indiv_profile"], function(mateTemplate){
                 $("#signed_in_user_profile_panel").html(mateTemplate(varsPassed.getCurrentUser()));
@@ -34,12 +35,14 @@ require(
 
       $("#home_nav").click(function(){
         $("#signed_in_user_profile_panel").css("display", "none");
+        $("#edit_panel").css("display", "none");
         $("#main_output").fadeIn("slow");
       });
 // Show Edit Panel
       $("#edit_nav").click(function(){
         $("#main_output").fadeOut();
          $("#signed_in_user_profile_panel").css("display", "none");
+         $("#edit_panel").fadeIn("slow");
 
     });
 

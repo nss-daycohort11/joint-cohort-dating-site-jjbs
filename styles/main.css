@@ -98,4 +98,7 @@ h1 {
   height: 300px;
   width: 300px; }
 
+#edit_panel {
+  display: none; }
+
 /*# sourceMappingURL=main.css.map */
