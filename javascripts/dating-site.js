@@ -17,11 +17,10 @@ require.config({
 });
 
 require(
-  ["jquery","lodash", "hbs","q", "bootstrap", "firebase", "auth"], 
-  function($,_, Handlebars, Q, bootstrap, firebase, auth) {
+  ["dependencies", "firebase", "auth", "check-user-status", "account"], 
+  function(dependencies, firebase, auth, status, account) {
   var ref = new Firebase("https://superdate.firebaseio.com");
   var authData = ref.getAuth();
-  console.log("authData", authData);
 
   $("#login").on("click", function() {
     console.log("authData", authData);
@@ -30,7 +29,16 @@ require(
         console.log("Login Failed!", error);
       } 
       else {
-        console.log("Authenticated successfully with payload:", authData);
+        var newUser = status.isNewUser(authData.uid);
+        if (newUser) {
+          console.log("This is a new user");
+          // Create this module
+          //account.create(authData);
+        }
+        if (!newUser) {
+          auth.setUid(authData.uid);
+          require(["core-list"], function(corelist) {});
+        }
       }
     });
   });
@@ -43,23 +51,5 @@ require(
       $('#pic').hide();
     });
   });
-
-  var image = authData.facebook.profileImageURL;
-  console.log("image", image);
-
-  $("#img").attr(image);
-
-
-    /*
-      You can choose to use the REST methods to interact with
-      Firebase, or you can use the Firebase API with event
-      listeners. It's completely up to each team.
-
-      If you choose the former, I created two boilerplate modules
-      named `potential-mates.js`, and `add-favorite.js`.
-     */
-
-
-    
   }
 );
