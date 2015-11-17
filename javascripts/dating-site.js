@@ -28,16 +28,17 @@ require(["dependencies", "firebase", "auth", "check-user-status", "account"],
         console.log("Login Failed!", error);
       } 
       else {
-        var newUser = status.isNewUser(authData.uid);
-        if (newUser) {
-          console.log("This is a new user");
-          // Create this module
-          //account.create(authData);
-        }
-        if (!newUser) {
-          auth.setUid(authData.uid);
-          require(["core-list"], function(corelist) {});
-        }
+        $(location).attr('href', '/main.html');
+        //var newUser = status.isNewUser(authData.uid);
+        // if (newUser) {
+        //   console.log("This is a new user");
+        //   // Create this module
+        //   //account.create(authData);
+        // }
+        // if (!newUser) {
+        //   auth.setUid(authData.uid);
+        //   require(["core-list"], function(corelist) {});
+        // }
       }
     });
   });
