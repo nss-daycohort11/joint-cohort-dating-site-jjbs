@@ -16,8 +16,7 @@ require.config({
   }
 });
 
-require(
-  ["dependencies", "firebase", "auth", "check-user-status", "account"], 
+require(["dependencies", "firebase", "auth", "check-user-status", "account"], 
   function(dependencies, firebase, auth, status, account) {
   var ref = new Firebase("https://superdate.firebaseio.com");
   var authData = ref.getAuth();
@@ -51,5 +50,4 @@ require(
       $('#pic').hide();
     });
   });
-  }
-);
+});

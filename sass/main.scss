@@ -1,10 +1,15 @@
 body {
    background-color: #04E49C;
 }
-img{
+#pow {
   margin-top: -27em;
   z-index: -1;
   position: relative;
+  padding-top: 0px;
+}
+
+img {
+  padding-top: 50px;
 }
 
 .loginScreen{
@@ -42,4 +47,149 @@ img{
   -7px 6px #cdd2d5,
   -7px 8px #808d93,
   -8px 7px #cdd2d5;
+}
+
+.emph{
+	font-weight: bold;
+}
+
+
+#nav_profile_image{
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	right: 50px;
+}
+
+#main_output{
+	min-height: 800px;
+	background-image: url("https://images.unsplash.com/photo-1423589989400-cc0270157ed0?ixlib=rb-0.3.5&q=80&fm=jpg&s=83076037343ea05ac4194b9b4a0c63c6");
+	background-position: center center;
+	background-size: cover;
+
+	.row{
+		height: 100%;
+		min-height: 800px;
+	}
+
+	#filer-panel{
+		height: 100%;
+		min-height: 800px;
+
+		.filter-item{
+			margin-top: 10px;
+		}
+
+		.filter-item:first-of-type{
+			margin-top: 30px;
+		}
+
+		.filter-btn{
+			margin-top: 30px;
+		}
+	}
+
+	#user-output{
+		height: 100%;
+		min-height: 800px;
+
+		.user_snippet{
+			margin-top: 30px;
+			height: 200px;
+			margin-left: 10%;
+			width: 80%;
+			cursor: pointer;
+
+		}
+
+		.jumbotron{
+				.snippet_text{
+					display: inline-block;
+					margin-left: 20px;
+					vertical-align: text-top;
+					position: relative;
+					margin-top: -20px;
+				}
+			}
+
+		.prof_thumbnail{
+			width: 150px;
+			height: 150px;
+			position: relative;
+			margin-top: -30px;
+			margin-left: -20px;
+			display: inline-block;
+			vertical-align: text-top;
+		}
+	}
+}
+
+
+
+#user_profile_panel {
+	display: none;
+	width: 90%;
+	height: 600px;
+	border-radius: 5px;
+	margin-left: 5%;
+	box-shadow: 1px 1px 10px #908E8E;
+	position: absolute;
+	top: 80px;
+	z-index: 5;
+	overflow: hidden;
+
+	#kill_panel{
+			font-size: 4rem;
+			right: 30px;
+			position: absolute;
+			cursor: pointer;
+			top: -20px;
+			z-index: 6;
+		}
+
+	#user_p_display{
+		height: 110%;
+		width: 100%;
+		position: relative
+
+	}
+
+
+	#column2{
+		#profile-photo{
+				height: 300px;
+				width: 300px;
+				display: block;
+			}
+		#like-button{
+			display: block;
+
+		}
+
+		
+	}
+
+}
+
+
+#signed_in_user_profile_panel{
+	display: none;
+	width: 100%;
+	min-height: 700px;
+	background-color: whitesmoke;
+
+		#profile-photo{
+				height: 300px;
+				width: 300px;
+				display: block;
+			}
+}
+
+.favorited_image_snippet{
+	height:300px;
+	width:300px;
+
+}
+#edit_panel{
+	display: none;
 }

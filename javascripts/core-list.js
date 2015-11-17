@@ -3,6 +3,7 @@ define(function(require){
   var fb = require("firebase");
   var auth = require("auth");
   var eventHand = require("event-handlers");
+  var loggedInFunctionality = require("logged-in-functionality");
   //var popdom = require("populate-dom"); // This is where the firebase data will be sent
 
   var ref = new Firebase("https://superdate.firebaseio.com");
@@ -27,4 +28,6 @@ define(function(require){
     var likedBy = snapshot.val();
     console.log("likedBy", likedBy);
   });
+
+  loggedInFunctionality();
 });
