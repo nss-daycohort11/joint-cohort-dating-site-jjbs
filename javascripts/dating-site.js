@@ -16,18 +16,16 @@ require.config({
   }
 });
 
-require(["dependencies", "firebase", "auth", "check-user-status", "account", "templates", "logged-in-functionality"], 
-  function(dependencies, firebase, auth, status, account, templates, loggedInFunctionality) {
-  var ref = new Firebase("https://superdate.firebaseio.com");
-  var authData = ref.getAuth();
+require(["dependencies", "firebase", "oauth", "auth", "check-user-status", "account", "templates", "logged-in-functionality"], 
+  function(dependencies, firebase, oauth, auth, status, account, templates, loggedInFunctionality) {
 
-  if (authData === null) {
-    // Load login template
-    $("body").html(templates.login());
+     $("body").html(templates.login());
+
     $("#login").on("click", function() {
-      ref.authWithOAuthPopup("facebook", function(error, authData) {
-        if (error) {
-          console.log("Login Failed!", error);
+      oauth.load().then(function(authData) {
+        if (authData === null) {
+          // Load login template
+          // $("body").html(templates.login());
         } else {
           require(["core-list"], function(corelist) {
             auth.setAuthData(authData);
@@ -35,13 +33,17 @@ require(["dependencies", "firebase", "auth", "check-user-status", "account", "te
             loggedInFunctionality(auth.getAuthData());
           });
         }
-      });
+        
+      }).fail();
+
     });
-  } else {
-    require(["core-list"], function(corelist) {
-      auth.setAuthData(authData);
-      $("body").html(templates.main());
-      loggedInFunctionality(auth.getAuthData());
-    });
-  }
+
+
+
+
+
+
+  var ref = new Firebase("https://superdate.firebaseio.com");
+  var authData = ref.getAuth();
+
 });
