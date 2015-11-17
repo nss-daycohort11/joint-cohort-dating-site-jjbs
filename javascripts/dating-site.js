@@ -17,11 +17,10 @@ require.config({
 });
 
 require(
-  ["jquery","lodash", "hbs","q", "bootstrap", "firebase", "auth"], 
-  function($,_, Handlebars, Q, bootstrap, firebase, auth) {
+  ["dependencies", "firebase", "auth", "check-user-status", "account"], 
+  function(dependencies, firebase, auth, status, account) {
   var ref = new Firebase("https://superdate.firebaseio.com");
   var authData = ref.getAuth();
-  console.log("authData", authData);
 
   $("#login").on("click", function() {
     console.log("authData", authData);
@@ -30,8 +29,15 @@ require(
         console.log("Login Failed!", error);
       } 
       else {
-        auth.setUid(authData);
-        require(["core-list"], function(corelist) {});
+        var newUser = status.isNewUser(authData.uid);
+        if (newUser) {
+          // Create this module
+          account.create(authData);
+        }
+        if (!newUser) {
+          auth.setUid(authData.uid);
+          require(["core-list"], function(corelist) {});
+        }
       }
     });
   });

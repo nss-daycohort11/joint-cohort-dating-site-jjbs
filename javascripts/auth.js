@@ -3,7 +3,6 @@ define(function(require) {
 
   return {
     getUid: function() {
-      console.log("returning", uid);
       return uid;
     },
     setUid: function(newId) {

@@ -3,7 +3,7 @@ define(function(require){
   var fb = require("firebase");
   var auth = require("auth");
   var eventHand = require("event-handlers");
-  var popdom = require("populate-dom"); // This is where the firebase data will be sent
+  //var popdom = require("populate-dom"); // This is where the firebase data will be sent
 
   var ref = new Firebase("https://superdate.firebaseio.com");
   ref.child("users").once("value", function(snapshot){

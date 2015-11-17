@@ -7,5 +7,5 @@ define(function(require){
 
   $(document).on("click", "#likeButton", function(){
     // Retrieve uids
-  })
-})
+  });
+});
