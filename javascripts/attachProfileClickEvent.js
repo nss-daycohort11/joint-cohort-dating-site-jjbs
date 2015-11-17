@@ -35,15 +35,19 @@ define(["jquery", "q", "lodash", "varsPassed", "profilePopulator"],function($, Q
 			               		uidOFClicked = $(this).attr("id");
 
 			               		//make uid able to be passed to different modules if needed
-			               		varsPassed.setUid($(this).attr("id"));
+			               		varsPassed.setUid(uidOFClicked);
+			               		console.log("varsPassed.get", varsPassed.getSelectedUid());
 
 			                $("#user_profile_panel").fadeIn(500);
 
 			                //loop through filtered and find matching key
 			                for(var key in varsPassed.getFiltered()){
-			                	if(key === uidOFClicked){
+			                	console.log("key", key);
+			                	if(varsPassed.getFiltered()[key].uid === uidOFClicked){
 			                		console.log("match");
 			                		clickedUidObj = varsPassed.getFiltered()[key];
+			                	}else{
+			                		console.log("Nope!");
 			                	}
 			                }
 

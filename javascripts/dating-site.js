@@ -79,10 +79,11 @@ require(
                 }
               }
 
-              console.log("filteredUsers", filteredUsers);
+
 
               //set Filtered Object as accessible variables
               varsPassed.setFiltered(filteredUsers);
+              console.log("varsPassed.getFiltered", varsPassed.getFiltered());
 
             //populate right side of main.html with filtered results (pass to hbs template)
             return snippetGeneration();
