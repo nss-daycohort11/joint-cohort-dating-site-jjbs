@@ -16,39 +16,32 @@ require.config({
   }
 });
 
-require(["dependencies", "firebase", "auth", "check-user-status", "account"], 
-  function(dependencies, firebase, auth, status, account) {
+require(["dependencies", "firebase", "auth", "check-user-status", "account", "templates", "logged-in-functionality"], 
+  function(dependencies, firebase, auth, status, account, templates, loggedInFunctionality) {
   var ref = new Firebase("https://superdate.firebaseio.com");
   var authData = ref.getAuth();
 
-  $("#login").on("click", function() {
-    console.log("authData", authData);
-    ref.authWithOAuthPopup("facebook", function(error, authData) {
-      if (error) {
-        console.log("Login Failed!", error);
-      } 
-      else {
-        $(location).attr('href', '/main.html');
-        //var newUser = status.isNewUser(authData.uid);
-        // if (newUser) {
-        //   console.log("This is a new user");
-        //   // Create this module
-        //   //account.create(authData);
-        // }
-        // if (!newUser) {
-        //   auth.setUid(authData.uid);
-        //   require(["core-list"], function(corelist) {});
-        // }
-      }
+  if (authData === null) {
+    // Load login template
+    $("body").html(templates.login());
+    $("#login").on("click", function() {
+      ref.authWithOAuthPopup("facebook", function(error, authData) {
+        if (error) {
+          console.log("Login Failed!", error);
+        } else {
+          require(["core-list"], function(corelist) {
+            auth.setAuthData(authData);
+            $("body").html(templates.main());
+            loggedInFunctionality(auth.getAuthData());
+          });
+        }
+      });
     });
-  });
- 
-  $(document).ready(function() {
-    $('#pic').hide();
-    $('#login').hover(function() {
-      $('#pic').show();
-    },function() {
-      $('#pic').hide();
+  } else {
+    require(["core-list"], function(corelist) {
+      auth.setAuthData(authData);
+      $("body").html(templates.main());
+      loggedInFunctionality(auth.getAuthData());
     });
-  });
+  }
 });

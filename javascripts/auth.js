@@ -1,13 +1,12 @@
 define(function(require) {
-  var uid = null;
+ var authData = null;
 
-  return {
-    getUid: function() {
-      return uid;
-    },
-    setUid: function(newId) {
-      console.log("setting user id to", newId);
-      uid = newId;
-    }
-  };
+ return {
+   getAuthData: function() {
+     return authData;
+   },
+   setAuthData: function(data) {
+     authData = data;
+   }
+ };
 });

@@ -2,8 +2,8 @@ define(
   ["jquery", "lodash", "filter_mates", "q", "attachProfileClickEvent", "varsPassed", "snippetGeneration"], 
   function($,_,filter_mates, Q, proClick, varsPassed, snippetGeneration) {
 
-return  function(){   //Show signed-in profile OR dashboard
-
+return  function(auth){   //Show signed-in profile OR dashboard
+  console.log(auth);
       $("#pro_nav").click(function(){
         $("#main_output").css("display", "none");
         $("#edit_panel").css("display", "none");
