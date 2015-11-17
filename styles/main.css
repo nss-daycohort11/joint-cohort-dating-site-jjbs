@@ -71,7 +71,8 @@ h1 {
     right: 30px;
     position: absolute;
     cursor: pointer;
-    top: -20px; }
+    top: -20px;
+    z-index: 6; }
   #user_profile_panel #user_p_display {
     height: 110%;
     width: 100%;

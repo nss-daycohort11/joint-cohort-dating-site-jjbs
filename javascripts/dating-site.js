@@ -14,8 +14,8 @@ require.config({
 });
 
 require(
-  ["jquery", "lodash", "filter_mates", "q", "attachProfileClickEvent", "varsPassed"], 
-  function($,_,filter_mates, Q, proClick, varsPassed) {
+  ["jquery", "lodash", "filter_mates", "q", "attachProfileClickEvent", "varsPassed", "snippetGeneration"], 
+  function($,_,filter_mates, Q, proClick, varsPassed, snippetGeneration) {
 
     //Show signed-in profile OR dashboard
       $("#pro_nav").click(function(){
@@ -67,6 +67,7 @@ require(
               var loweredFilter = filterBy.toLowerCase();
 
               for(var key in returnedData){
+
                 if(returnedData[key].superPower.toLowerCase() === loweredFilter){
 
                   //set each filtered user as a key on filteredUsers object
@@ -80,12 +81,11 @@ require(
               varsPassed.setFiltered(filteredUsers);
 
             //populate right side of main.html with filtered results (pass to hbs template)
-            require(["hbs!../templates/filter_mates"], function(mateTemplate){
-                $("#user-output").html(mateTemplate(filteredUsers));
-              });
+            return snippetGeneration();
 
 
-          }).done(function(){ 
+          }).then(function(){ 
+              console.log("inside second then");
               proClick.attachClick();
           });
 

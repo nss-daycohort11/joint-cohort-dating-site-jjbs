@@ -12,22 +12,24 @@ define(["jquery", "q", "lodash", "varsPassed", "profilePopulator"],function($, Q
 
 		 attachClick: function(){
 			
+			var deferred = Q.defer();
 
 			//I PUT IN AJAX CALL FOR TESTING BECAUSE IT WASNT OBEYING AND WAS ATTACHING CLICK PREMATURELY
 
 
 				//replace this get code with firebase module by team, but for now I just got from firebase
-				$.ajax({
-					  url: "https://radiant-inferno-9240.firebaseio.com/songs.json",
-					  method: "GET"
-				}).done(function(usersReturned){
+				// $.ajax({
+				// 	  url: "https://radiant-inferno-9240.firebaseio.com/songs.json",
+				// 	  method: "GET"
+				// }).done(function(usersReturned){
 
 					//set object to hold specific clicked uid
 					var clickedUidObj ={}
 
 
 				 //attach event listener
-			              $(".user_snippet").click(function(){
+
+			        $("body").on('click', ".user_snippet",  function(){
 
 			              		//set uid to work with
 			               		uidOFClicked = $(this).attr("id");
@@ -51,34 +53,31 @@ define(["jquery", "q", "lodash", "varsPassed", "profilePopulator"],function($, Q
 			                //populate prof based on clicked
 			                 require(["hbs!../templates/indiv_profile"], function(mateTemplate){
 							$("#user_profile_panel").html(mateTemplate(clickedUidObj))
+
+								 //resolve the promise
+					            deferred.resolve();
+
 							});
 
 				             //attach exit click  SAME ISSUE AS BEFORE
-				                	$("#kill_panel").click(function(){
-				                		console.log("meh");
-				                		 $("#user_profile_panel").fadeOut(100);
-				                	});
+
+				              $("body").on('click', "#kill_panel", function(){
+				              	console.log("meh");
+				                		 $("#user_profile_panel").fadeOut(500);
+				              });
 
 				             //attach like click 
-				                	$("#like_button").click(function(){
-				                		console.log("you liked it");
-				                		
-				                	});
-
-			                 
-
-
-
+				                $("body").on('click', "#like-button", function(){
+				              		console.log("you liked it");
+				                	$("#user_profile_panel").fadeOut(500);
+				              });
+			              
 			              });
 
-			         
-
-				});
-			}
+					return deferred.promise;
 
 
-
-
+				}
 
    }
 });
