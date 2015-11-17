@@ -25,6 +25,10 @@ require(
                 $("#signed_in_user_profile_panel").html(mateTemplate(varsPassed.getCurrentUser()));
               });
 
+              require(["hbs!../templates/favorited_panel"], function(mateTemplate){
+                //Need to pass current user obj. favorited key below 
+                $("#signed_in_user_profile_panel").append(mateTemplate());
+              });
         $("#signed_in_user_profile_panel").fadeIn("slow");
       });
 
