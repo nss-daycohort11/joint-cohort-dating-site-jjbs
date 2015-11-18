@@ -1,6 +1,6 @@
 define(
-  ["jquery", "waitForData", "lodash", "filter_mates", "q", "attachProfileClickEvent", "varsPassed", "snippetGeneration"], 
-  function($,_, waitForData, filter_mates, Q, proClick, varsPassed, snippetGeneration) {
+  ["jquery", "waitForData", "lodash", "filter_mates", "q", "attachProfileClickEvent", "varsPassed", "snippetGeneration", "edit-profile"], 
+  function($,_, waitForData, filter_mates, Q, proClick, varsPassed, snippetGeneration, editProfile) {
 
 return  function(auth){   //Show signed-in profile OR dashboard
   console.log(auth);

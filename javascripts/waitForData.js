@@ -4,7 +4,7 @@ define(
 
 return function(){
 	
-}
+};
 
 
   });

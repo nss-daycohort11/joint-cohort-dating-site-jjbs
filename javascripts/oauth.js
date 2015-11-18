@@ -24,7 +24,7 @@ define(["jquery", "firebase", "q", "auth", "templates", "logged-in-functionality
 
   		return deferred.promise;
   	}
-  }
+  };
 
  
 });

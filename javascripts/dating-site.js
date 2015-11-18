@@ -18,10 +18,11 @@ require.config({
 
 require(["dependencies", "firebase", "oauth", "auth", "check-user-status", "account", "templates", "logged-in-functionality"], 
   function(dependencies, firebase, oauth, auth, status, account, templates, loggedInFunctionality) {
-
+    if(auth.getAuthData() === null) {
      $("body").html(templates.login());
+    }
 
-    $("#login").on("click", function() {
+    $(document).on("click", "#login", function(){
       oauth.load().then(function(authData) {
         if (authData === null) {
           // Load login template
