@@ -2,22 +2,50 @@ define(
   ["jquery", "waitForData", "lodash", "filter_mates", "q", "attachProfileClickEvent", "varsPassed", "snippetGeneration", "edit-profile"], 
   function($,_, waitForData, filter_mates, Q, proClick, varsPassed, snippetGeneration, editProfile) {
 
-return  function(auth){   //Show signed-in profile OR dashboard
-  console.log(auth);
+    var signedInUid;
 
+return  function(auth){   //Show signed-in profile OR dashboard
 
       $("#pro_nav").click(function(){
         $("#main_output").css("display", "none");
         $("#edit_panel").css("display", "none");
 
+        var uidOfCurrentUser = auth.uid;
+        console.log("uid of current", uidOfCurrentUser);
+
+        $.ajax({
+          url: "https://superdate.firebaseio.com/users.json"
+        }).done(function(data){
+
+          console.log("data", data);
+          //create object of objects to hold likes
+             var likes = {};
+            //loop through current data and if data.key.likes includes the same id as current user, output it
+            for(var key in data){
+              console.log("data.key", data[key].likes);
+                for(var likeKeys in data[key].likes){
+                  if(likeKeys === auth.uid){
+                    likes[key] = data[key];
+                  }
+                }
+            }
+
+            console.log("likes after loop", likes);
+
+          var userToPop = data[uidOfCurrentUser];
+      
+          //populate current profile of user
          require(["hbs!../templates/signed_indiv_profile"], function(mateTemplate){
-                $("#signed_in_user_profile_panel").html(mateTemplate(varsPassed.getCurrentUser()));
+                $("#signed_in_user_profile_panel").html(mateTemplate(userToPop));
               });
 
+         //populate people who have liked current person
               require(["hbs!../templates/favorited_panel"], function(mateTemplate){
                 //Need to pass current user obj. favorited key below 
-                $("#signed_in_user_profile_panel").append(mateTemplate());
+                $("#signed_in_user_profile_panel").append(mateTemplate(likes));
               });
+
+        });
         $("#signed_in_user_profile_panel").fadeIn("slow");
       });
 
@@ -26,6 +54,7 @@ return  function(auth){   //Show signed-in profile OR dashboard
         $("#edit_panel").css("display", "none");
         $("#main_output").fadeIn("slow");
       });
+
 // Show Edit Panel
       $("#edit_nav").click(function(){
         $("#main_output").fadeOut();
@@ -45,6 +74,8 @@ return  function(auth){   //Show signed-in profile OR dashboard
 
         //Filter mates on filter btn click
         $(".filter-btn").click(function(){
+          signedInUid = auth;
+          console.log("the private var", signedInUid);
 
           var filteredUsers = {};
           
@@ -53,6 +84,8 @@ return  function(auth){   //Show signed-in profile OR dashboard
           //ajax with a promise
           filter_mates()
           .then(function(returnedData){
+
+            varsPassed.setAllUsers(returnedData);
 
             //log data returned
             console.log("data returned", returnedData);
@@ -86,7 +119,7 @@ return  function(auth){   //Show signed-in profile OR dashboard
 
           }).then(function(){ 
               console.log("inside second then");
-              proClick.attachClick();
+              proClick.attachClick(auth);
           });
 
         });
