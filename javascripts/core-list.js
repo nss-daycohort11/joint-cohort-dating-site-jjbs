@@ -9,20 +9,6 @@ define(["dependencies", "firebase", "auth", "check-user-status", "account", "eve
     //popdom.displayData(users);
   });
 
-  // ref.child("users").orderByChild('uid').equalTo(auth.getAuthData().uid).once("value", function(snapshot){
-  //   var myprofile = snapshot.val();
-  //   console.log("myProfile", myprofile);
-  //   //popdom.displayData(users);
-  // });
 
-  // ref.child("my-likes").orderByKey().equalTo(auth.getUid()).on("child_added", function(snapshot, prevChildKey){
-  //   var myLikes = snapshot.val();
-  //   console.log("myLikes", myLikes);
-  // });
-
-  // ref.child("my-admirers").orderByKey().equalTo(auth.getUid()).on("child_added", function(snapshot, prevChildKey){
-  //   var likedBy = snapshot.val();
-  //   console.log("likedBy", likedBy);
-  // });
 
 });
