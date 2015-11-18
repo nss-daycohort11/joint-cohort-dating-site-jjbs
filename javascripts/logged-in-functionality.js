@@ -56,8 +56,8 @@ return  function(auth){   //Show signed-in profile OR dashboard
           //ajax with a promise
           filter_mates()
           .then(function(returnedData){
-            
-            // varsPassed.setAllUsers(value);
+
+            varsPassed.setAllUsers(returnedData);
 
             //log data returned
             console.log("data returned", returnedData);
