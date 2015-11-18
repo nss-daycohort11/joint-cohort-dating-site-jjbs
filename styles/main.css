@@ -123,5 +123,7 @@ img {
 
 #edit_panel {
   display: none; }
+  #edit_panel .alert {
+    display: none; }
 
 /*# sourceMappingURL=main.css.map */
