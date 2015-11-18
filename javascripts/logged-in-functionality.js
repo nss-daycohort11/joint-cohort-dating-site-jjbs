@@ -2,15 +2,24 @@ define(
   ["jquery", "waitForData", "lodash", "filter_mates", "q", "attachProfileClickEvent", "varsPassed", "snippetGeneration", "edit-profile"], 
   function($,_, waitForData, filter_mates, Q, proClick, varsPassed, snippetGeneration, editProfile) {
 
+    //private variable
     var signedInUid;
 
-return  function(auth){   //Show signed-in profile OR dashboard
+//auth parameter is given authData from dating-site.js module
+return  function(auth){   
 
+      // on profile button click (located in navbar) 
       $("#pro_nav").click(function(){
+
+        //hide main output panel
         $("#main_output").css("display", "none");
+
+        //hide edit panel 
         $("#edit_panel").css("display", "none");
 
+        //store uid of current user (logged in user) inside uidOfCurrentUser variable
         var uidOfCurrentUser = auth.uid;
+
         console.log("uid of current", uidOfCurrentUser);
 
         $.ajax({

@@ -55,7 +55,7 @@ require(["dependencies", "firebase", "oauth", "auth", "check-user-status", "acco
               $("body").html(templates.main());
 
               //pass authdata variable into the logged-in-functionality.js module
-              //then run logged in functionality module
+                //then run logged in functionality module -->e.g. on successful login, (handled in oauth.js module), logged-in-functionality.js runs 
               loggedInFunctionality(auth.getAuthData());
 
             });
