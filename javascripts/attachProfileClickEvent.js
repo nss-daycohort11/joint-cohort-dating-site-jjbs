@@ -10,20 +10,10 @@ define(["jquery", "q", "lodash", "varsPassed", "profilePopulator"],function($, Q
 			return uidOFClicked;
 		},
 
-		 attachClick: function(){
+		 attachClick: function(auth){
 			
 			var deferred = Q.defer();
 
-			//I PUT IN AJAX CALL FOR TESTING BECAUSE IT WASNT OBEYING AND WAS ATTACHING CLICK PREMATURELY
-
-
-				//replace this get code with firebase module by team, but for now I just got from firebase
-				// $.ajax({
-				// 	  url: "https://radiant-inferno-9240.firebaseio.com/songs.json",
-				// 	  method: "GET"
-				// }).done(function(usersReturned){
-
-					//set object to hold specific clicked uid
 					var clickedUidObj ={};
 
 
@@ -72,7 +62,11 @@ define(["jquery", "q", "lodash", "varsPassed", "profilePopulator"],function($, Q
 
 				             //attach like click 
 				                $("body").on('click', "#like-button", function(){
-				              		console.log("you liked it");
+				              		console.log("you liked it", varsPassed.getSelectedUid());
+				              		//attach auth uid to likedBy key
+
+			
+
 				                	$("#user_profile_panel").fadeOut(500);
 				              });
 			              

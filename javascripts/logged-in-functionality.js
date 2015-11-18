@@ -2,9 +2,9 @@ define(
   ["jquery", "waitForData", "lodash", "filter_mates", "q", "attachProfileClickEvent", "varsPassed", "snippetGeneration", "edit-profile"], 
   function($,_, waitForData, filter_mates, Q, proClick, varsPassed, snippetGeneration, editProfile) {
 
-return  function(auth){   //Show signed-in profile OR dashboard
-  console.log(auth);
+    var signedInUid;
 
+return  function(auth){   //Show signed-in profile OR dashboard
 
       $("#pro_nav").click(function(){
         $("#main_output").css("display", "none");
@@ -26,6 +26,7 @@ return  function(auth){   //Show signed-in profile OR dashboard
         $("#edit_panel").css("display", "none");
         $("#main_output").fadeIn("slow");
       });
+
 // Show Edit Panel
       $("#edit_nav").click(function(){
         $("#main_output").fadeOut();
@@ -45,6 +46,8 @@ return  function(auth){   //Show signed-in profile OR dashboard
 
         //Filter mates on filter btn click
         $(".filter-btn").click(function(){
+          signedInUid = auth;
+          console.log("the private var", signedInUid);
 
           var filteredUsers = {};
           
@@ -53,6 +56,8 @@ return  function(auth){   //Show signed-in profile OR dashboard
           //ajax with a promise
           filter_mates()
           .then(function(returnedData){
+            
+            // varsPassed.setAllUsers(value);
 
             //log data returned
             console.log("data returned", returnedData);
@@ -86,7 +91,7 @@ return  function(auth){   //Show signed-in profile OR dashboard
 
           }).then(function(){ 
               console.log("inside second then");
-              proClick.attachClick();
+              proClick.attachClick(auth);
           });
 
         });

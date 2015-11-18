@@ -3,6 +3,7 @@ define(["jquery", "q", "lodash"],function($, Q, _){
 	var uidSelected;
 	var filteredObjectList = {};
 	var currentUser = {};
+	var allusers;
 
 
 	return {
@@ -29,6 +30,14 @@ define(["jquery", "q", "lodash"],function($, Q, _){
 
 		setCurrentUser: function(value){
 			currentUser = value;
+		},
+
+		getAllReturned: function(){
+			return allusers
+		},
+
+		setAllUsers : function(value){
+			allusers = value;
 		}
 
 
