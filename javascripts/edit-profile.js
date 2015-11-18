@@ -28,7 +28,10 @@ define(function(require){
       "species": species,
       "location": location,
       "nemesis": nemesis,
-      "superPower": superPower
+      "superPower": superPower,
+      "likes": {
+        "someUid": "someThing"
+      }
     };
     return profileObj;
   };

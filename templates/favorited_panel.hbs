@@ -1,3 +1,4 @@
+{{#each this}}
 <div class="row">
 	<div class="col-md-12">	
 
@@ -6,15 +7,17 @@
 		<h1>Favorited by:</h1>
 			
 
-				<div id="{{uid}}" class="jumbotron user_snippet">
-	  				<img src="#" class="prof_thumbnail favorited_image_snippet">
+				<div id="{{this.uid}}" class="jumbotron user_snippet">
+	  				<img src="{{this.image}}" class="prof_thumbnail favorited_image_snippet">
 	  				<div class="snippet_text">
-						<p> Name: {{nameSuper}}</p>
-						<p> Gender: {{gender}}</p>
-						<p> Superpower: {{superPower}}</p>
+						<p> Name: {{this.nameSuper}}</p>
+						<p> Gender: {{this.gender}}</p>
+						<p> Superpower: {{this.superPower}}</p>
 	  				</div>
 					<button class="btn">Check'em out!</button>		
 				</div><!-- end user snippet-->
 
 	</div>
 </div>	
+
+{{/each}}

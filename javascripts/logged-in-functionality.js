@@ -10,14 +10,42 @@ return  function(auth){   //Show signed-in profile OR dashboard
         $("#main_output").css("display", "none");
         $("#edit_panel").css("display", "none");
 
+        var uidOfCurrentUser = auth.uid;
+        console.log("uid of current", uidOfCurrentUser);
+
+        $.ajax({
+          url: "https://superdate.firebaseio.com/users.json"
+        }).done(function(data){
+
+          console.log("data", data);
+          //create object of objects to hold likes
+             var likes = {}
+            //loop through current data and if data.key.likes includes the same id as current user, output it
+            for(var key in data){
+              console.log("data.key", data[key].likes);
+                for(var likeKeys in data[key].likes){
+                  if(likeKeys === auth.uid){
+                    likes[key] = data[key];
+                  }
+                }
+            }
+
+            console.log("likes after loop", likes);
+
+          var userToPop = data[uidOfCurrentUser];
+      
+          //populate current profile of user
          require(["hbs!../templates/signed_indiv_profile"], function(mateTemplate){
-                $("#signed_in_user_profile_panel").html(mateTemplate(varsPassed.getCurrentUser()));
+                $("#signed_in_user_profile_panel").html(mateTemplate(userToPop));
               });
 
+         //populate people who have liked current person
               require(["hbs!../templates/favorited_panel"], function(mateTemplate){
                 //Need to pass current user obj. favorited key below 
-                $("#signed_in_user_profile_panel").append(mateTemplate());
+                $("#signed_in_user_profile_panel").append(mateTemplate(likes));
               });
+
+        });
         $("#signed_in_user_profile_panel").fadeIn("slow");
       });
 

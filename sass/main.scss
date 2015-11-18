@@ -66,6 +66,7 @@ img {
 	background-image: url("https://images.unsplash.com/photo-1423589989400-cc0270157ed0?ixlib=rb-0.3.5&q=80&fm=jpg&s=83076037343ea05ac4194b9b4a0c63c6");
 	background-position: center center;
 	background-size: cover;
+	margin-top: 50px;
 
 	.row{
 		height: 100%;
@@ -99,6 +100,10 @@ img {
 			margin-left: 10%;
 			width: 80%;
 			cursor: pointer;
+
+			img {
+				padding-top: 0px;
+			}
 
 		}
 
@@ -150,7 +155,8 @@ img {
 	#user_p_display{
 		height: 110%;
 		width: 100%;
-		position: relative
+		position: relative;
+		margin-top: 100px;
 
 	}
 
@@ -160,6 +166,7 @@ img {
 				height: 300px;
 				width: 300px;
 				display: block;
+				padding-top: 0px;
 			}
 		#like-button{
 			display: block;
@@ -193,3 +200,5 @@ img {
 #edit_panel{
 	display: none;
 }
+
+
