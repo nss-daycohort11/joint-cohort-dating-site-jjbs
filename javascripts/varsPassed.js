@@ -3,6 +3,8 @@ define(["jquery", "q", "lodash"],function($, Q, _){
 	var uidSelected;
 	var filteredObjectList = {};
 	var currentUser = {};
+	var uidOfLoggedIn;
+	var profilePicForLogged;
 
 
 	return {
@@ -29,6 +31,22 @@ define(["jquery", "q", "lodash"],function($, Q, _){
 
 		setCurrentUser: function(value){
 			currentUser = value;
+		},
+
+		getUidofLoggedIn: function(){
+			return uidOfLoggedIn
+		},
+
+		setUidOfLoggedIn: function(value){
+			uidOfLoggedIn = value;
+		},
+
+		getProfilePic : function(){
+			return profilePicForLogged;
+		},
+
+		setProfilePic : function(value){
+			profilePicForLogged = value;
 		}
 
 
